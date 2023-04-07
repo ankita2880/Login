@@ -1,8 +1,12 @@
 from django.db import models
 
 # Create your models here.
-class login(models.Model):
-    username = models.EmailField(max_length=100) 
-    password = models.CharField(max_length=20)
-    timestamp = models.DateTimeField(auto_now_add=True)
-    
+
+class User(models.Model):
+    username = models.CharField(max_length=50, unique=True)
+    password = models.CharField(max_length=128)
+    confirm_password = models.CharField(max_length=128,null=True,blank = True)
+    mobile_no = models.BigIntegerField()
+
+    def __str__(self):
+        return self.username
