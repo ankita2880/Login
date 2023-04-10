@@ -13,39 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-# from django.contrib import admin
-# from django.urls import path
-# from login import views
- 
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-#     path('', views.home, name='home'),
-#     path('signin/',views.signin, name='signin'),
-#     path('signout/',views.signout, name='signout'),
-#     path('signup/',views.signup, name='signup'),
-#     path('profile/',views.profile, name='profile'),
-# ]
 
-# from django.contrib import admin
-# from django.urls import path,include
-# from login.views import LoginView
-# from rest_framework_simplejwt.views import (
-#     TokenObtainPairView,
-#     TokenRefreshView,
-# )
-
-# urlpatterns = [
-#     path('admin/',admin.site.urls),
-#     path('login/', LoginView.as_view()),
-#     path('api-auth/', include('rest_framework.urls')),
-#     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-#     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-
-# ]
-
-from django.urls import path
-from login.views import LoginView
+from django.contrib import admin
+from django.urls import path, include
+from login.views import index
 
 urlpatterns = [
-    path('login/', LoginView.as_view(), name='login'),
+    path('admin/', admin.site.urls),
+    # path('api/', include('loginlogout.urls')),
+    path('', index, name="index"),
 ]

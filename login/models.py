@@ -1,12 +1,13 @@
 from django.db import models
 
-# Create your models here.
+from django.contrib.auth.models import User
 
 class User(models.Model):
-    username = models.CharField(max_length=50, unique=True)
-    password = models.CharField(max_length=128)
-    confirm_password = models.CharField(max_length=128,null=True,blank = True)
-    mobile_no = models.BigIntegerField()
+    username = models.CharField(max_length=255, null=False)
+    email = models.EmailField(max_length=255, null=False,default="")
+    password = models.CharField(max_length=255, null=False, unique=True)
+    ifLogged = models.BooleanField(default=False)
+    token = models.CharField(max_length=255, null=True, default="")
 
     def __str__(self):
-        return self.username
+        return "{} -{}".format(self.username, self.email)
